@@ -91,6 +91,8 @@ char *GmfKwdFmt[ GmfMaxKwd + 1 ][4] =
 	{"RequiredEdges", "RequiredEdge", "i", "i"},
 	{"RequiredTriangles", "RequiredTriangle", "i", "i"},
 	{"RequiredQuadrilaterals", "RequiredQuadrilateral", "i", "i"},
+        {"ParallelCommunicators", "", "", "ii"},
+        {"ParallelVertices", "ParallelVertex", "i", "iii"},
 	{"TangentAtEdgeVertices", "TangentAtEdgeVertex", "i", "iii"},
 	{"NormalAtVertices", "NormalAtVertex", "i", "ii"},
 	{"NormalAtTriangleVertices", "NormalAtTriangleVertex", "i", "iii"},

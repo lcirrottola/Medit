@@ -46,6 +46,7 @@ int loadMesh(pMesh mesh) {
   mesh->nhex = GmfStatKwd(inm,GmfHexahedra);
   mesh->nc   = GmfStatKwd(inm,GmfCorners);
   mesh->nr   = GmfStatKwd(inm,GmfRequiredVertices);
+  int ncomm  = GmfStatKwd(inm,GmfParallelVertices);
   mesh->na   = GmfStatKwd(inm,GmfEdges);
   mesh->nri  = GmfStatKwd(inm,GmfRidges);
   mesh->nre  = GmfStatKwd(inm,GmfRequiredEdges);
@@ -273,6 +274,26 @@ int loadMesh(pMesh mesh) {
     else {
       pr = &mesh->edge[is];
       pr->tag |= M_REQUIRED;
+    }
+  }
+
+
+  /* parallel vertices */
+  GmfGotoKwd(inm,GmfParallelVertices);
+  int dummy1,dummy2;
+  mesh->npar = 0;
+  for (k=1; k<=ncomm; k++) {
+    GmfGetLin(inm,GmfParallelVertices,&dummy1,&is,&dummy2);
+    mesh->npar += is;
+  }
+  for (k=1; k<=mesh->npar; k++) {
+    GmfGetLin(inm,GmfParallelVertices,&is,&dummy1,&dummy2);
+    if ( is < 1 || is > mesh->np )
+      disc++;
+    else {
+      ppt = &mesh->point[is];
+      ppt->tag &= ~M_UNUSED;
+      ppt->tag |= M_PARALLEL;
     }
   }
 

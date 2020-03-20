@@ -6,6 +6,7 @@
 #define M_RIDGE    (1 << 1)
 #define M_REQUIRED (1 << 2)
 #define M_TAG      (1 << 3)
+#define M_PARALLEL (1 << 4)
 #define M_UNUSED   (1 << 5)
 
 #ifndef ubyte
@@ -86,7 +87,7 @@ typedef struct mesh {
   double      xtra,ytra,ztra;
   float       bbmin,bbmax;
   int         ne,ne2,nt,nt2,nq,ntet,ntet2,nhex;
-  int         np,nc,nr,na,nre,nri;
+  int         np,nc,nr,npar,na,nre,nri;
   int         nvn,ntg,dim,ver,nbb,typage,nfield,mark;
   char        name[256],typ;
 

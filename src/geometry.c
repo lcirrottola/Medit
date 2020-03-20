@@ -19,6 +19,7 @@ GLuint geomList(pScene sc,pMesh mesh) {
   static float rouge[4] = {1.0, 0.0, 0.0, 1.0};
   static float jaune[4] = {1.0, 1.0, 0.0, 1.0};
   static float orange[4]= {1.0, 0.65, 0.0, 1.0};
+  static float bleu[4]  = {0.0, 0.0, 1.0, 1.0};
   static double hsv[3] = { 0.0, 1.0, 0.8 };
   
   /* default */
@@ -41,6 +42,8 @@ GLuint geomList(pScene sc,pMesh mesh) {
       ppt = &mesh->point[k];
       if ( ppt->tag & M_UNUSED )
         continue;
+      else if ( ppt->tag & M_PARALLEL )
+        glColor3fv(bleu);
       else if ( ppt->tag & M_CORNER )
         glColor3fv(rouge);
       else if ( ppt->tag & M_REQUIRED )

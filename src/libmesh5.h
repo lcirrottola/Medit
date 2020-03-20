@@ -52,6 +52,8 @@ enum GmfKwdCod
 	GmfRequiredEdges, \
 	GmfRequiredTriangles, \
 	GmfRequiredQuadrilaterals, \
+        GmfParallelCommunicators, \
+        GmfParallelVertices, \
 	GmfTangentAtEdgeVertices, \
 	GmfNormalAtVertices, \
 	GmfNormalAtTriangleVertices, \
